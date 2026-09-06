@@ -7,7 +7,7 @@ import br.com.eduspace.entities.place.auditorium.CreateAuditoriumRequest;
 import br.com.eduspace.entities.place.classroom.ClassRoom;
 import br.com.eduspace.entities.place.classroom.CreateClassRoomRequest;
 import br.com.eduspace.repositories.place.AuditoriumRepository;
-import br.com.eduspace.repositories.place.ClassRommRepository;
+import br.com.eduspace.repositories.place.ClassRoomRepository;
 import br.com.eduspace.repositories.place.LabRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class PlaceService {
     private AuditoriumRepository auditoriumRepository;
 
     @Autowired
-    private ClassRommRepository classRommRepository;
+    private ClassRoomRepository classRommRepository;
 
     @Autowired
     private LabRepository labRepository;
