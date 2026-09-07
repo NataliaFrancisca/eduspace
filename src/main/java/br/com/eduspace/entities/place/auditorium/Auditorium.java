@@ -10,15 +10,16 @@ public class Auditorium extends Place {
 
     public Auditorium(){}
 
-    public Auditorium(AuditoriumDTO auditoriumDTO){
-        super(auditoriumDTO.id(), auditoriumDTO.capacity(), auditoriumDTO.isAccessible());
-        this.microphonesAvailable = auditoriumDTO.microphones();
-    }
-
     public Auditorium(String id, int capacity, boolean isAccessible, int microphones) {
         super(id, capacity, isAccessible);
         this.microphonesAvailable = microphones;
     }
+
+    public Auditorium(String id, int capacity, boolean isAccessible, int microphones, String sponsorName) {
+        super(id, capacity, isAccessible, sponsorName);
+        this.microphonesAvailable = microphones;
+    }
+
 
     public void setMicrophonesAvailable(int microphonesAvailable) {
         this.microphonesAvailable = microphonesAvailable;
