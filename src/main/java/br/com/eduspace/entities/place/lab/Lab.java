@@ -17,10 +17,10 @@ public class Lab extends Place {
         this.softwares = softwares;
     }
 
-    public Lab(CreateLabRequest register){
-        super(register.place().id(), register.place().capacity(), register.place().isAccessible());
-        this.softwares = register.softwares();
-        this.OS = register.OS();
+    public Lab(String id, int capacity, boolean isAccessible, String sponsorName, String OS, List<String> softwares) {
+        super(id, capacity, isAccessible, sponsorName);
+        this.OS = OS;
+        this.softwares = softwares;
     }
 
     public void setOS(String OS) {

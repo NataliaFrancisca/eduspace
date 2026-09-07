@@ -23,6 +23,14 @@ public abstract class Place {
         this.isAvailable = true;
     }
 
+    public Place(String id, int capacity, boolean isAccessible, String sponsorName) {
+        this.id = id;
+        this.capacity = capacity;
+        this.isAccessible = isAccessible;
+        this.isAvailable = true;
+        this.sponsorName = sponsorName;
+    }
+
     public String getId() {return id;}
     public int getCapacity() {return capacity;}
     public boolean isAccessible() {return isAccessible;}
