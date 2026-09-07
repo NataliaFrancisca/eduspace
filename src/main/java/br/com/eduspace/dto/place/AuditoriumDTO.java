@@ -1,15 +1,18 @@
 package br.com.eduspace.dto.place;
 
-import br.com.eduspace.entities.place.auditorium.CreateAuditoriumRequest;
+import br.com.eduspace.entities.place.auditorium.Auditorium;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public record AuditoriumDTO(
-        String id, int capacity, boolean isAccessible, int microphones
+        String id, int capacity, boolean isAccessible, int microphones, String sponsorName
 ) {
-    public AuditoriumDTO(CreateAuditoriumRequest auditorium){
+    public AuditoriumDTO(Auditorium auditorium){
         this(
-                auditorium.place().id(),
-                auditorium.place().capacity(),
-                auditorium.place().isAccessible(),
-                auditorium.microphonesAvailable());
+                auditorium.getId(),
+                auditorium.getCapacity(),
+                auditorium.isAccessible(),
+                auditorium.getMicrophonesAvailable(),
+                auditorium.getSponsorName());
     }
 }
