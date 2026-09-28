@@ -1,13 +1,19 @@
 package br.com.eduspace.entities.place;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 
 public record PlaceRecord(
         @NotBlank
-        String id,
-        @Min(20)
+        @Pattern(
+                regexp = "\\d{3}[A-Z]",
+                message = "placeCode must contain 3 digits followed by a block letter"
+        )
+        String placeCode,
+
+        @NotNull
+        @Min(10)
         int capacity,
+
         boolean isAccessible,
 
         String sponsorName
