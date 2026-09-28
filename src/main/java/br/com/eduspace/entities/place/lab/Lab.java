@@ -11,22 +11,15 @@ public class Lab extends Place {
 
     public Lab(){}
 
-    public Lab(String id, int capacity, boolean isAccessible, String OS, List<String> softwares) {
-        super(id, capacity, isAccessible);
-        this.OS = OS;
+    public Lab(String placeCode, int capacity, boolean isAccessible, String sponsorName, List<String> softwares, String OS) {
+        super(placeCode, capacity, isAccessible, sponsorName);
         this.softwares = softwares;
-    }
-
-    public Lab(String id, int capacity, boolean isAccessible, String sponsorName, String OS, List<String> softwares) {
-        super(id, capacity, isAccessible, sponsorName);
         this.OS = OS;
-        this.softwares = softwares;
     }
 
     public void setOS(String OS) {
         this.OS = OS;
     }
-
     public void setSoftwares(List<String> softwares) {
         this.softwares = softwares;
     }
@@ -34,7 +27,6 @@ public class Lab extends Place {
     public List<String> getSoftwares() {
         return softwares;
     }
-
     public String getOS() {
         return OS;
     }
