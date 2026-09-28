@@ -11,7 +11,7 @@ public record LabDTO(
 
     public LabDTO(Lab lab){
         this(
-                lab.getId(),
+                lab.getPlaceCode(),
                 lab.getCapacity(),
                 lab.isAccessible(),
                 lab.getSponsorName(),
