@@ -9,7 +9,7 @@ public record AuditoriumDTO(
 ) {
     public AuditoriumDTO(Auditorium auditorium){
         this(
-                auditorium.getId(),
+                auditorium.getPlaceCode(),
                 auditorium.getCapacity(),
                 auditorium.isAccessible(),
                 auditorium.getMicrophonesAvailable(),

@@ -9,7 +9,7 @@ public record ClassRoomDTO(
 ) {
     public ClassRoomDTO(ClassRoom classRoom){
         this(
-                classRoom.getId(),
+                classRoom.getPlaceCode(),
                 classRoom.getCapacity(),
                 classRoom.isAccessible(),
                 classRoom.isEquippedHybridClasses(),
