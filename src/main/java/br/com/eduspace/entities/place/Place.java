@@ -2,44 +2,45 @@ package br.com.eduspace.entities.place;
 
 import jakarta.persistence.*;
 
-@Entity(name = "place")
+import java.util.UUID;
+
+@Entity
+@Table(name = "places")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Place {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
-    private int capacity;
+    @Column(nullable = false, unique = true)
+    private String placeCode;
+
+    @Column(nullable = false)
+    private Integer capacity;
+    @Column(nullable = false)
     private boolean isAccessible;
-    private boolean isAvailable;
+    @Column(nullable = false)
+    private boolean active;
 
     private String sponsorName;
 
     public Place(){}
 
-    public Place(String id, int capacity, boolean isAccessible) {
-        this.id = id;
+    public Place(String placeCode, int capacity, boolean isAccessible, String sponsorName) {
+        this.placeCode = placeCode;
         this.capacity = capacity;
         this.isAccessible = isAccessible;
-        this.isAvailable = true;
-    }
-
-    public Place(String id, int capacity, boolean isAccessible, String sponsorName) {
-        this.id = id;
-        this.capacity = capacity;
-        this.isAccessible = isAccessible;
-        this.isAvailable = true;
+        this.active = true;
         this.sponsorName = sponsorName;
     }
 
-    public String getId() {return id;}
+    public String getPlaceCode() {return placeCode;}
     public int getCapacity() {return capacity;}
     public boolean isAccessible() {return isAccessible;}
-    public boolean isAvailable() {return isAvailable;}
+    public boolean isActive() {return active;}
     public String getSponsorName() {return sponsorName;}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    public void setPlaceCode(String placeCode) {this.placeCode = placeCode;}
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
@@ -49,8 +50,8 @@ public abstract class Place {
         isAccessible = accessible;
     }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public void setSponsorName(String sponsorName) {
