@@ -13,6 +13,7 @@ import br.com.eduspace.entities.place.lab.Lab;
 import br.com.eduspace.repositories.place.AuditoriumRepository;
 import br.com.eduspace.repositories.place.ClassRoomRepository;
 import br.com.eduspace.repositories.place.LabRepository;
+import br.com.eduspace.validators.PlaceExistsValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,20 +29,32 @@ public class PlaceService {
     @Autowired
     private LabRepository labRepository;
 
+    @Autowired
+    private PlaceExistsValidator placeExistsValidator;
+
     public AuditoriumDTO registerAuditorium(CreateAuditoriumRequest request) {
         Auditorium auditoriumEntity = new PlaceMapper().toEntity(request);
+
+        this.placeExistsValidator.validate(auditoriumEntity);
+
         var data = this.auditoriumRepository.save(auditoriumEntity);
         return new AuditoriumDTO(data);
     }
 
     public ClassRoomDTO registerClassRoom(CreateClassRoomRequest request) {
         ClassRoom classRoomEntity = new PlaceMapper().toEntity(request);
+
+        this.placeExistsValidator.validate(classRoomEntity);
+
         var data = this.classRoomRepository.save(classRoomEntity);
         return new ClassRoomDTO(data);
     }
 
     public LabDTO registerLab(CreateLabRequest request) {
         Lab labEntity = new PlaceMapper().toEntity(request);
+
+        this.placeExistsValidator.validate(labEntity);
+
         var data = this.labRepository.save(labEntity);
         return new LabDTO(data);
     }
