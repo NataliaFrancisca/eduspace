@@ -15,11 +15,8 @@ public abstract class Place {
     @Column(nullable = false, unique = true)
     private String placeCode;
 
-    @Column(nullable = false)
     private Integer capacity;
-    @Column(nullable = false)
     private boolean isAccessible;
-    @Column(nullable = false)
     private boolean active;
 
     private String sponsorName;

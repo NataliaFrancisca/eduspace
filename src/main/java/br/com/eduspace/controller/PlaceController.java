@@ -7,6 +7,7 @@ import br.com.eduspace.entities.place.auditorium.CreateAuditoriumRequest;
 import br.com.eduspace.entities.place.classroom.CreateClassRoomRequest;
 import br.com.eduspace.entities.place.lab.CreateLabRequest;
 import br.com.eduspace.services.PlaceService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -22,19 +23,19 @@ public class PlaceController {
     private PlaceService service;
 
     @PostMapping("/auditorium")
-    public ResponseEntity<AuditoriumDTO> save(@RequestBody CreateAuditoriumRequest place){
+    public ResponseEntity<AuditoriumDTO> save(@RequestBody @Valid CreateAuditoriumRequest place){
         var auditorium =  this.service.registerAuditorium(place);
         return ResponseEntity.ok(auditorium);
     }
 
     @PostMapping("/classroom")
-    public ResponseEntity<ClassRoomDTO> save(@RequestBody CreateClassRoomRequest place){
+    public ResponseEntity<ClassRoomDTO> save(@RequestBody @Valid CreateClassRoomRequest place){
         var classroom = this.service.registerClassRoom(place);
         return ResponseEntity.ok(classroom);
     }
 
     @PostMapping("/lab")
-    public ResponseEntity<LabDTO> save(@RequestBody CreateLabRequest place){
+    public ResponseEntity<LabDTO> save(@RequestBody @Valid CreateLabRequest place){
         var lab = this.service.registerLab(place);
         return ResponseEntity.ok(lab);
     }

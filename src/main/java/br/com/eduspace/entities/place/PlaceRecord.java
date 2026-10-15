@@ -11,11 +11,15 @@ public record PlaceRecord(
         String placeCode,
 
         @NotNull
-        @Min(10)
+        @Min(value = 10, message = "capacity must be equal or bigger than 10.")
         int capacity,
 
         boolean isAccessible,
 
+        @Pattern(
+                regexp = ".*\\S.*",
+                message = "sponsor's name is required"
+        )
         String sponsorName
 ) {
 }
